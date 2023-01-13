@@ -1,0 +1,791 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+
+<HEAD>
+  <link rel='shortcut icon' href='image/png-clipart-bulldog-shar-pei-mammal-carnivoran.png' />
+  <TITLE> KhaLaNa Information </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+  <link rel="stylesheet" href="/image/css/tinyPlayer.css" />
+  <script src="https://kit.fontawesome.com/b8b432d7d3.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+     
+      z-index: 0;
+
+      background-image: url(image/nature-3082832_1920.jpg);
+      background-repeat: repeat;
+
+      background-color: #1d0505;
+
+    }
+
+
+    canvas {
+      position: absolute;
+      width: 80%;
+      height: 80%;
+      z-index: 10;
+      left: 10px;
+      top: 0px;
+
+
+
+    }
+
+    .audio {
+      width: 80%;
+      position: absolute;
+      top: 70%;
+      height: 20%;
+      z-index: 100;
+    }
+
+    .box {
+      position: absolute;
+      width: 500px;
+      height: 700px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #2a45b2;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+
+    }
+
+    .box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+
+      width: 500px;
+      height: 700px;
+      background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+      animation: animate 6s linear infinite;
+      transform-origin: bottom right;
+
+    }
+
+    .box::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+
+      width: 500px;
+      height: 700px;
+      background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+      animation: animate 6s linear infinite;
+      transform-origin: bottom right;
+      animation-delay: -3s;
+
+    }
+
+    .form {
+      position: absolute;
+      inset: 3px;
+      border-radius: 8px;
+      background: #0734e8;
+      z-index: 1;
+      padding: 50px;
+      background-image: url("image/a.jpg");
+      background-repeat: repeat;
+
+      background-size: 100%;
+    }
+
+    .social-media {
+      position: static;
+      grid-area: 2/1/3/3;
+      
+
+      background-color: var(--secondary-bg);
+      color: var(--secondary-color);
+      padding: 15px;
+      border-radius: 10px;
+
+      display: block;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .media-link {
+      text-decoration: #050505;
+      font: bold;
+      color: var(--accent-color);
+      font-size: 30px;
+    }
+
+    @media only screen and (max-width:1024px) {
+      .box {
+        position: absolute;
+        width: 800px;
+        height: 900px;
+        border-radius: 12px;
+        overflow: hidden;
+
+        background-color: #070707;
+
+
+
+
+      }
+
+      .box::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+
+        width: 800px;
+        height: 900px;
+        background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+        animation: animate 6s linear infinite;
+        transform-origin: bottom right;
+      }
+
+      .box::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+
+        width: 800px;
+        height: 900px;
+        background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+        animation: animate 6s linear infinite;
+        transform-origin: bottom right;
+        animation-delay: -3s;
+
+      }
+
+      .form {
+        position: absolute;
+        inset: 3px;
+        border-radius: 8px;
+        background: #28292d;
+        z-index: 1;
+        padding: 50px;
+        background-image: url("image/a.jpg");
+        background-repeat: no-repeat;
+
+        background-size: 100%;
+      }
+
+      .body {
+        display: block;
+        justify-content: center;
+        align-items: center;
+        min-height: 10vh;
+        min-width: 60%;
+        background-image: url(image/images.jfif);
+        background-repeat: repeat;
+        z-index: 0;
+        background-color: #050505;
+      }
+
+      .audio {
+        position: relative;
+        top: 80%;
+        height: 20%;
+        width: 100%;
+        z-index: 30;
+      
+      }
+
+   
+    }
+
+    @keyframes animate {
+      0% {
+        transform: rotate(0deg);
+
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+
+    ;
+  </style>
+</HEAD>
+
+<BODY>
+
+  <div class="box">
+
+    <div class="form">
+      <canvas id="pinkboard"></canvas>
+      <div class="audio">
+
+        <div class="wrapper">
+
+          <!-- 1. length of song not updating - something with const duration-->
+          <div class="music-container" id="music-container">
+            <div class="music-info">
+              <h4 id="title"></h4>
+
+              <div class="progress-container progress-range" id="progress-container">
+                <div class="progress progress-bar" id="progress"></div>
+              </div>
+            </div>
+            <div class="social-media">
+              <span style="font-family:monospace;font:bold">Follow me in:</span>
+              <a href="https://www.facebook.com/phuongnhi.dang.965" class="media-link"><i class="fab fa-facebook-square"></i></a>
+           
+              <a href="https://www.linkedin.com/in/mohammadsahragard/" class="media-link"><i
+                  class="fab fa-linkedin"></i></a>
+              <a href="https://www.instagram.com/khalana_n/?hl=en" class="media-link"><i
+                  class="fab fa-instagram-square"></i></a>
+  
+            </div>
+
+            <audio autoplay src="image/NgheNhuTinhYeu-HIEUTHUHAI-7045493.mp3" id="audio"
+              class="audio audio_player" preload="metadata"></audio>
+
+            <div class="navigation">
+              <button id="prev" class="action-btn" title="Previous">
+                <i class="fas fa-backward"></i>
+              </button>
+              <button id="play" class="action-btn action-btn-big">
+                <i class="fas fa-play"></i>
+              </button>
+              <button id="next" class="action-btn" title="Next">
+                <i class="fas fa-forward"></i>
+              </button>
+
+              <button class="action-btn speaker">
+                <i id="speaker_icon" class="fa fa-volume-up" aria-hidden="true"></i>
+              </button>
+              <input type="range" name="volume" class="player_slider" min="0" max="1" step="0.05" value="1"></input>
+
+              <div class="time">
+                <span class="time-elapsed">00:00</span>
+                <span class="time-duration"> / 5:59</span>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script>
+    /*
+   * Settings
+   */
+    var settings = {
+      particles: {
+        length: 2000, // maximum amount of particles
+        duration: 2, // particle duration in sec
+        velocity: 100, // particle velocity in pixels/sec
+        effect: -1.3, // play with this for a nice effect
+        size: 10, // particle size in pixels
+      },
+    };
+    /*
+     * RequestAnimationFrame polyfill by Erik Möller
+     */
+    (function () {
+      var b = 0;
+      var c = ["ms", "moz", "webkit", "o"];
+      for (var a = 0; a < c.length && !window.requestAnimationFrame; ++a) {
+        window.requestAnimationFrame = window[c[a] + "RequestAnimationFrame"];
+        window.cancelAnimationFrame = window[c[a] + "CancelAnimationFrame"] || window[c[a] + "CancelRequestAnimationFrame"]
+      }
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = function (h, e) {
+          var d = new Date().getTime();
+          var f = Math.max(0, 16 - (d - b)); var g = window.setTimeout(function () { h(d + f) }, f); b = d + f; return g
+        }
+      } if (!window.cancelAnimationFrame) { window.cancelAnimationFrame = function (d) { clearTimeout(d) } }
+    }());
+    /*
+     * Point class
+     */
+    var Point = (function () {
+      function Point(x, y) {
+        this.x = (typeof x !== 'undefined') ? x : 0;
+        this.y = (typeof y !== 'undefined') ? y : 0;
+      }
+      Point.prototype.clone = function () {
+        return new Point(this.x, this.y);
+      };
+      Point.prototype.length = function (length) {
+        if (typeof length == 'undefined')
+          return Math.sqrt(this.x * this.x + this.y * this.y);
+        this.normalize();
+        this.x *= length;
+        this.y *= length;
+        return this;
+      };
+      Point.prototype.normalize = function () {
+        var length = this.length();
+        this.x /= length;
+        this.y /= length;
+        return this;
+      };
+      return Point;
+    })();
+    /*
+     * Particle class
+     */
+    var Particle = (function () {
+      function Particle() {
+        this.position = new Point();
+        this.velocity = new Point();
+        this.acceleration = new Point();
+        this.age = 0;
+      }
+      Particle.prototype.initialize = function (x, y, dx, dy) {
+        this.position.x = x;
+        this.position.y = y;
+        this.velocity.x = dx;
+        this.velocity.y = dy;
+        this.acceleration.x = dx * settings.particles.effect;
+        this.acceleration.y = dy * settings.particles.effect;
+        this.age = 0;
+      };
+      Particle.prototype.update = function (deltaTime) {
+        this.position.x += this.velocity.x * deltaTime;
+        this.position.y += this.velocity.y * deltaTime;
+        this.velocity.x += this.acceleration.x * deltaTime;
+        this.velocity.y += this.acceleration.y * deltaTime;
+        this.age += deltaTime;
+      };
+      Particle.prototype.draw = function (context, image) {
+        function ease(t) {
+          return (--t) * t * t + 1;
+        }
+        var size = image.width * ease(this.age / settings.particles.duration);
+        context.globalAlpha = 1 - this.age / settings.particles.duration;
+        context.drawImage(image, this.position.x - size / 2, this.position.y - size / 2, size, size);
+      };
+      return Particle;
+    })();
+    /*
+     * ParticlePool class
+     */
+    var ParticlePool = (function () {
+      var particles,
+        firstActive = 0,
+        firstFree = 0,
+        duration = settings.particles.duration;
+
+      function ParticlePool(length) {
+        // create and populate particle pool
+        particles = new Array(length);
+        for (var i = 0; i < particles.length; i++)
+          particles[i] = new Particle();
+      }
+      ParticlePool.prototype.add = function (x, y, dx, dy) {
+        particles[firstFree].initialize(x, y, dx, dy);
+
+        // handle circular queue
+        firstFree++;
+        if (firstFree == particles.length) firstFree = 0;
+        if (firstActive == firstFree) firstActive++;
+        if (firstActive == particles.length) firstActive = 0;
+      };
+      ParticlePool.prototype.update = function (deltaTime) {
+        var i;
+
+        // update active particles
+        if (firstActive < firstFree) {
+          for (i = firstActive; i < firstFree; i++)
+            particles[i].update(deltaTime);
+        }
+        if (firstFree < firstActive) {
+          for (i = firstActive; i < particles.length; i++)
+            particles[i].update(deltaTime);
+          for (i = 0; i < firstFree; i++)
+            particles[i].update(deltaTime);
+        }
+
+        // remove inactive particles
+        while (particles[firstActive].age >= duration && firstActive != firstFree) {
+          firstActive++;
+          if (firstActive == particles.length) firstActive = 0;
+        }
+
+
+      };
+      ParticlePool.prototype.draw = function (context, image) {
+        // draw active particles
+        if (firstActive < firstFree) {
+          for (i = firstActive; i < firstFree; i++)
+            particles[i].draw(context, image);
+        }
+        if (firstFree < firstActive) {
+          for (i = firstActive; i < particles.length; i++)
+            particles[i].draw(context, image);
+          for (i = 0; i < firstFree; i++)
+            particles[i].draw(context, image);
+        }
+      };
+      return ParticlePool;
+    })();
+    /*
+     * Putting it all together
+     */
+    (function (canvas) {
+      var context = canvas.getContext('2d'),
+        particles = new ParticlePool(settings.particles.length),
+        particleRate = settings.particles.length / settings.particles.duration, // particles/sec
+        time;
+
+      // get point on heart with -PI <= t <= PI
+      function pointOnHeart(t) {
+
+        return new Point(
+          160 * Math.pow(Math.sin(t), 3),
+          130 * Math.cos(t) - 50 * Math.cos(2 * t) - 20 * Math.cos(3 * t) - 10 * Math.cos(4 * t) + 25
+        );
+      }
+
+      // creating the particle image using a dummy canvas
+      var image = (function () {
+        var canvas = document.createElement('canvas'),
+          context = canvas.getContext('2d');
+        canvas.width = settings.particles.size;
+        canvas.height = settings.particles.size;
+        // helper function to create the path
+        function to(t) {
+          var point = pointOnHeart(t);
+          point.x = settings.particles.size / 2 + point.x * settings.particles.size / 350;
+          point.y = settings.particles.size / 2 - point.y * settings.particles.size / 350;
+          return point;
+        }
+        // create the path
+        context.beginPath();
+        var t = -Math.PI;
+        var point = to(t);
+        context.moveTo(point.x, point.y);
+        while (t < Math.PI) {
+          t += 1; // baby steps!
+          point = to(t);
+          context.lineTo(point.x, point.y);
+        }
+        context.closePath();
+        // create the fill
+        context.fillStyle = "pink";
+        context.fill();
+        // create the image
+        var image = new Image();
+        image.src = canvas.toDataURL();
+        return image;
+      })();
+
+      // render that thing!
+      function render() {
+        // next animation frame
+        requestAnimationFrame(render);
+
+        // update time
+        var newTime = new Date().getTime() / 1000,
+          deltaTime = newTime - (time || newTime);
+        time = newTime;
+
+        // clear canvas
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        // create new particles
+        var amount = particleRate * deltaTime;
+        for (var i = 0; i < amount; i++) {
+          var pos = pointOnHeart(Math.PI - 2 * Math.PI * Math.random());
+          var dir = pos.clone().length(settings.particles.velocity);
+          particles.add(canvas.width / 2 + pos.x, canvas.height / 2 - pos.y, dir.x, -dir.y);
+        }
+
+        // update and draw particles
+        particles.update(deltaTime);
+        particles.draw(context, image);
+      }
+
+      // handle (re-)sizing of the canvas
+      function onResize() {
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+      }
+      window.onresize = onResize;
+
+      // delay rendering bootstrap
+      setTimeout(function () {
+        onResize();
+        render();
+      }, 10);
+    })
+      (document.getElementById('pinkboard'));
+  </script>
+  <script>
+    const musicContainer = document.getElementById('music-container');
+    const audioPlayer = musicContainer.querySelector('.audio_player');
+
+    const title = document.getElementById('title');
+    // 
+    const progressRange = document.querySelector('.progress-range');
+    const progressBar = document.querySelector('.progress-bar');
+    // 
+    // const progressContainer = document.getElementById('progress-container');
+    // const progress = document.getElementById('progress');
+
+    const currentTime = document.querySelector('.time-elapsed');
+    const duration = document.querySelector('.time-duration');
+
+    const audio = document.getElementById('audio');
+
+    const prevBtn = document.getElementById('prev');
+    const playBtn = document.getElementById('play');
+    const nextBtn = document.getElementById('next');
+
+    const speaker = musicContainer.querySelector('.speaker');
+    const speakerIcon = musicContainer.querySelector('#speaker_icon');
+
+    const ranges = musicContainer.querySelectorAll('.player_slider');
+    const volInput = musicContainer.querySelector('input[name="volume"]')
+
+    // const cover = document.getElementById('cover');
+
+    // Song Titles - need to get rid of this hard coded list of titles. Need to be able to upload multiple files from desktop or load a list from an API
+    const songs = [
+      'Nguyễn Thị Phương Nhi',
+      'Kha La Na',
+      'Nhỏ Khó Ưa',
+      'STK:1015451351 ',
+      'VietComBank',
+      'SDT:0765272235',
+      '.....',
+      '...........',
+    ];
+
+    // Keep track of song
+    let songIndex = 0;
+
+    // initially load song details into DOM
+    loadSong(songs[songIndex]);
+
+    function loadSong(song) {
+      title.innerText = song;
+      // audio.src = `music/${song}.mp3`;
+      // need an array of songs, either on the user's harddrive or another website
+      //audio.src = `https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/4.mp3`;
+      // cover.src = `images/${song}.jpg`;
+    }
+
+    // remove Play icon, add Pause icon 
+    function playSong() {
+      musicContainer.classList.add('play');
+      playBtn.querySelector('i.fas').classList.remove('fa-play');
+      playBtn.querySelector('i.fas').classList.add('fa-pause');
+
+      audio.play();
+    }
+
+    // remove Pause icon, add Play icon
+    // why aren't these combined into a play\pause toggle function?
+    function pauseSong() {
+      musicContainer.classList.remove('play');
+      playBtn.querySelector('i.fas').classList.add('fa-play');
+      playBtn.querySelector('i.fas').classList.remove('fa-pause');
+
+      audio.pause();
+    }
+
+    // previous song
+    function prevSong() {
+      songIndex--;
+
+      if (songIndex < 0) {
+        songIndex = songs.length - 1;
+      }
+
+      loadSong(songs[songIndex]);
+
+
+    }
+
+    // next song
+    function nextSong() {
+      songIndex++;
+
+      if (songIndex > songs.length - 1) {
+        songIndex = 0;
+      }
+
+      loadSong(songs[songIndex]);
+
+
+    }
+
+    // update progress bar
+    // function updateProgress(e) {
+    //   const { duration, currentTime } = e.srcElement;
+    //   const progressPercent = (currentTime / duration) * 100;
+    //   progress.style.width = `${progressPercent}%`;
+    //   console.log('Working');
+    // }
+
+    /* updateProgress - the above one stops progress, the one below works but get NaN */
+
+
+    // VIDEO - - - - - - -Calculate display time format
+    // IT'S THIS FUNCTION, THE SECONDS
+
+    function displayTime(time) {
+      const minutes = Math.floor(time / 60);
+      let seconds = Math.floor(time % 60);
+      seconds = seconds > 9 ? seconds : `0${seconds}`;
+      return `${minutes}:${seconds}`;
+      // return minutes + ':' + seconds;
+    }
+
+    // VIDEO - - - - - - - update progress bar as the video plays
+    // OR THIS FUNCTION, DURATION IS A PROPERTY OF THE VIDEO ELEMENT, WHAT ABOUT THE AUDIO ELEMENT? ad to comment out time-duration in index.html
+
+    function updateProgress() {
+      //   added this to stop the NaN displaying, seems to work
+      let duration = 0;
+      progressBar.style.width = `${(audioPlayer.currentTime / audioPlayer.duration) * 100}%`;
+      currentTime.textContent = `${displayTime(audioPlayer.currentTime)} /`;
+      // currentTime.textContent = `${displayTime(audioPlayer.currentTime)}`;
+      duration.textContent =
+        // had to comment out the duration   
+        `${displayTime(audioPlayer.duration)}`;
+    }
+    // VIDEO - - - - -
+    function scrub(event) {
+      const scrubTime = (event.offsetX / progressRange.offsetWidth) * audioPlayer.duration;
+      audioPlayer.currentTime = scrubTime;
+    }
+
+    // from https://css-tricks.com/lets-create-a-custom-audio-player/ but only got rid of the initial load - search: html5 audio element duration NaN
+    const displayDuration = () => {
+      duration.textContent = displayTime(audio.duration);
+    }
+
+    if (audio.readyState > 0) {
+      displayDuration();
+    } else {
+      audio.addEventListener('loadedmetadata', () => {
+        displayDuration();
+      });
+    }
+
+    // set progress bar
+    // function setProgress(e) {
+    //   const width = this.clientWidth;
+    //   const clickX = e.offsetX;
+    //   const duration = audio.duration;
+
+    //   audio.currentTime = (clickX / width) * duration;
+    // }
+    // VIDEO - - - - - Click to seek within the video
+    function setProgress(e) {
+      const newTime = e.offsetX / progressRange.offsetWidth;
+      progressBar.style.width = `${newTime * 100}%`;
+      audioPlayer.currentTime = newTime * audioPlayer.duration;
+    }
+
+    // ==================== VOLUME CONTROLS
+
+    // volume functions
+    function handleRangeUpdate() {
+      audioPlayer[this.name] = this.value;
+      (audioPlayer['volume'] === 0 ? speakerIcon.className = "fa fa-volume-off" :
+        speakerIcon.className = "fa fa-volume-up")
+    }
+
+    let muted = false;
+
+    // need to have the muste button return to previous setting, not back to full
+    function mute() {
+      if (!muted) {
+        audioPlayer['volume'] = 0;
+        volInput.value = 0;
+        speakerIcon.className = "fa fa-volume-off"
+        muted = true;
+      } else {
+        audioPlayer['volume'] = 1;
+        volInput.value = 1;
+        muted = false;
+        speakerIcon.className = "fa fa-volume-up"
+      }
+    }
+
+    // ==================== END VOLUME CONTROLS
+
+    // Event Listeners
+    playBtn.addEventListener('click', () => {
+      const isPlaying = musicContainer.classList.contains('play');
+
+      if (isPlaying) {
+        pauseSong();
+      } else {
+        playSong();
+      }
+    });
+
+    // Change Song
+    setInterval(nextSong, 1000);
+    prevBtn.addEventListener('click', prevSong);
+    nextBtn.addEventListener('click', nextSong);
+
+    // time and song update
+    audio.addEventListener('timeupdate', updateProgress);
+
+    // click on progrss bar
+    // progressContainer.addEventListener('click', setProgress);
+    // VIDEO
+    progressRange.addEventListener('click', setProgress);
+
+    // preload metadata
+
+
+    // song ends
+    audio.addEventListener('ended', nextSong);
+
+    // volume
+    ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+    ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
+    speaker.addEventListener('click', mute)
+
+    // progress bar controls
+    let mouseDown = false;
+    progressRange.addEventListener('click', scrub);
+    progressRange.addEventListener('mousemove', (event) => mouseDown && scrub(event));
+    progressRange.addEventListener('mousedown', () => mouseDown = true);
+    progressRange.addEventListener('mouseup', () => mouseDown = false);
+
+// ignore the massive amount of lines commented out - will fix later
+// the song titles refer to the songs on my computer - you could hard code the title if the HTML if you only intend to use this for one song
+// I can't figure out how to get rid of Nan for the duration element
+  </script>
+
+</BODY>
+
+</HTML>
