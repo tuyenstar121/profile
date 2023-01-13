@@ -115,13 +115,13 @@
 .music-container .music-info {
   opacity: 1;
   transform: translateY(-150%);
-  background-color: rgba(8, 236, 57, 0.5);
+  background-color: rgba(2, 60, 15, 0.5);
   border: 0.125em solid black;
 }
 
 .music-info h4 {
-  color: rgb(5, 37, 145);
-  font-weight: bold;
+  color: rgb(240, 244, 242);
+  table-layout: fixed;
   margin: 0.5em;
   /* padding: 0 0 0 0.125em; */
   text-align: center;
@@ -205,3 +205,5 @@ input[type='range']::-moz-range-thumb {
   /* had to add that to stop the width shifting from NaN */
   /* width: 6em; */
 }
+
+ 
