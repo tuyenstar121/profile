@@ -125,7 +125,7 @@
 
       display: block;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
     }
 
     .media-link {
@@ -205,8 +205,8 @@
 
       .audio {
         position: relative;
-        top: 80%;
-        height: 20%;
+        top: 75%;
+        height: 30%;
         width: 100%;
         z-index: 30;
       
@@ -579,8 +579,12 @@
       'STK:1015451351 ',
       'VietComBank',
       'SDT:0765272235',
-      '.....',
-      '...........',
+      'Hey!',
+      'Cậu Ơi',
+      '.......',
+      '..........',
+      'chơi game không',
+
     ];
 
     // Keep track of song
@@ -751,7 +755,7 @@
     });
 
     // Change Song
-    setInterval(nextSong, 1000);
+    setInterval(nextSong, 3000);
     prevBtn.addEventListener('click', prevSong);
     nextBtn.addEventListener('click', nextSong);
 
