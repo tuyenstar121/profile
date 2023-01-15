@@ -1,239 +1,251 @@
-const musicContainer = document.getElementById('music-container');
-const audioPlayer = musicContainer.querySelector('.audio_player');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-const title = document.getElementById('title');
-// 
-const progressRange = document.querySelector('.progress-range');
-const progressBar = document.querySelector('.progress-bar');
-// 
-// const progressContainer = document.getElementById('progress-container');
-// const progress = document.getElementById('progress');
 
-const currentTime = document.querySelector('.time-elapsed');
-const duration = document.querySelector('.time-duration');
 
-const audio = document.getElementById('audio');
+.wrapper {
 
-const prevBtn = document.getElementById('prev');
-const playBtn = document.getElementById('play');
-const nextBtn = document.getElementById('next');
-
-const speaker = musicContainer.querySelector('.speaker');
-const speakerIcon = musicContainer.querySelector('#speaker_icon');
-
-const ranges = musicContainer.querySelectorAll('.player_slider');
-const volInput = musicContainer.querySelector('input[name="volume"]')
-
-// const cover = document.getElementById('cover');
-
-// Song Titles - need to get rid of this hard coded list of titles. Need to be able to upload multiple files from desktop or load a list from an API
-const songs = [
-  'Nguyễn Thị Phương Nhi',
-  'Little Paradise',
-  'Molasses',
-  'Moon',
-  'Summer',
-  'Ukulele',
-  'Hey',
-];
-
-// Keep track of song
-let songIndex = 0;
-
-// initially load song details into DOM
-loadSong(songs[songIndex]);
-
-function loadSong(song) {
-  title.innerText = song;
-  // audio.src = `music/${song}.mp3`;
-// need an array of songs, either on the user's harddrive or another website
-  audio.src = `https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/4.mp3`;
-  // cover.src = `images/${song}.jpg`;
+  border: 0.125em solid rgba(238, 238, 238, 0.589);
+  border-radius: 0.5em;
+  padding: 1em 1em 1em;
+  background-color: rgba(0, 0, 0, 0.541);
 }
 
-// remove Play icon, add Pause icon 
-function playSong() {
-  musicContainer.classList.add('play');
-  playBtn.querySelector('i.fas').classList.remove('fa-play');
-  playBtn.querySelector('i.fas').classList.add('fa-pause');
-
-  audio.play();
+.music-container {
+   background-color: rgba(255, 255, 255, 0.5); 
+  border-radius: 1em;
+  box-shadow: 0 1em 1.25em 0 rgba(16, 21, 88, 0.6);
+  display: block;
+  padding: 1em 1em;
+  position: relative;
+  margin: 2em 0 0;
+  z-index: 10;
 }
 
-// remove Pause icon, add Play icon
-// why aren't these combined into a play\pause toggle function?
-function pauseSong() {
-  musicContainer.classList.remove('play');
-  playBtn.querySelector('i.fas').classList.add('fa-play');
-  playBtn.querySelector('i.fas').classList.remove('fa-pause');
 
-  audio.pause();
+
+.navigation {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.125em 0;
+  border-radius: 0.5em;
+  width: 100%;
 }
 
-// previous song
-function prevSong() {
-  songIndex--;
+.action-btn {
+  /* background-color: #fff; */
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  /* border-radius: 0.5em; */
+  /* color: #dfdbdf; */
+  color: #fff;
+  /* color: goldenrod; */
+  font-size: 0.875rem;
+  width: 2em;
+  cursor: pointer;
+  /* margin: 0.5em; */
+  margin: 0 0.5em;
+  padding: 0.5em 0.25em;
+  /* padding-left: 0.25em; */
+}
 
-  if (songIndex < 0) {
-    songIndex = songs.length - 1;
+.action-btn.action-btn-big {
+  /* color: #cdc2d0; */
+  color: #fff;
+  /* color: goldenrod; */
+  font-size: 0.95rem;
+}
+
+/* .action-btn:focus, */
+.action-btn:hover {
+  outline: 0;
+  /* color: #fff; */
+  color: goldenrod;
+}
+
+.speaker {
+  margin-right: -1.25em;
+  color: #fff;
+  /* text-align: left; */
+  /* color: goldenrod; */
+}
+/* .player_button {
+  background: none;
+  border: 0;
+  line-height: 1;
+  color: white;
+  text-align: center;
+  outline: 0;
+  padding: 0;
+  cursor: pointer;
+  max-width: 50px;
+  font-size: 1rem;
+}
+.player_button:focus,
+.player_button:hover {
+  border-color: #ffc600;
+  border-color: blue;
+} */
+
+.music-info {
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  border-radius: 1em 1em 0 0;
+  position: absolute;
+  bottom:  40px;
+  left: 1.25em;
+  width: calc(100% - 40px);
+  /* width: 100%; */
+  /* margin: 0 auto; */
+  padding: 0.25em 0.5em 0.25em;
+  text-align: center;
+  /* opacity: 0;
+  transform: translateY(0%);
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  z-index: 0; */
+}
+
+/* .music-info .vol-controls {
+  text-align: left;
+  padding: 0.25em 0 0.25em;
+} */
+
+/* .music-container.play .music-info { */
+.music-container .music-info {
+  opacity: 1;
+  transform: translateY(-150%);
+  background-color: rgba(2, 60, 15, 0.5);
+  border: 0.125em solid black;
+}
+
+.music-info h4 {
+  color: rgb(240, 244, 242);
+  table-layout: fixed;
+  margin: 0.5em;
+  /* padding: 0 0 0 0.125em; */
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.progress-container {
+  background: #fff;
+  border-radius: 0.25em;
+  cursor: pointer;
+  margin: 0.5em;
+  /* padding-bottom: 0.25em; */
+  height: 0.25em;
+  width: 95%;
+}
+
+.progress {
+  background-color: #15d88d;
+  border-radius: 0.25em;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.player_slider {
+  width: 0.75rem;
+  height: 3rem;
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  background: transparent;
+  width: 30%;
+  margin: 0 20px;
+}
+input[type='range']:focus {
+  outline: none;
+}
+input[type='range']::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50px;
+  border: 0.2px solid rgba(1, 1, 1, 0);
+}
+input[type='range']::-webkit-slider-thumb {
+  height: 0.75em;
+  width: 1em;
+  border-radius: 0.25em;
+  background: goldenrod;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -4px;
+  box-shadow: 0 0 2px rgb(15, 14, 80);
+}
+
+input[type='range']::-moz-range-track {
+  width: 60%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+  background: #ffffff;
+  border-radius: 1.3px;
+  border: 0.2px solid rgba(1, 1, 1, 0);
+}
+input[type='range']::-moz-range-thumb {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
+  height: 12px;
+  width: 17px;
+  border-radius: 50px;
+  background: #fe8daa;
+  cursor: pointer;
+}
+
+.time {
+  color: #fff;
+  font-size: 0.9rem;
+  padding-right: 0.25em;
+  /* had to add that to stop the width shifting from NaN */
+  /* width: 6em; */
+}
+
+ 
+.form {
+  position: absolute;
+  inset: 3px;
+  border-radius: 10px;
+  background: #0e101a;
+  z-index: 1;
+  padding: 50px;
+  align-items: center;
+  background-repeat: repeat;
+  background-blend-mode: hard-light;
+
+  background-size: cover;
+  animation: anitu 40s ease-in-out infinite;
+
+}
+
+@keyframes anitu {
+  0% {
+    background-image: url("image/a.jpg");
+
   }
 
-  loadSong(songs[songIndex]);
+  25% {
+    background-image: url("image/3.png");
 
-  playSong();
-}
-
-// next song
-function nextSong() {
-  songIndex++;
-
-  if (songIndex > songs.length - 1) {
-    songIndex = 0;
   }
 
-  loadSong(songs[songIndex]);
+  50% {
+    background-image: url("image/3.png");
 
-  playSong();
-}
-
-// update progress bar
-// function updateProgress(e) {
-//   const { duration, currentTime } = e.srcElement;
-//   const progressPercent = (currentTime / duration) * 100;
-//   progress.style.width = `${progressPercent}%`;
-//   console.log('Working');
-// }
-
-/* updateProgress - the above one stops progress, the one below works but get NaN */
-
-
-// VIDEO - - - - - - -Calculate display time format
-// IT'S THIS FUNCTION, THE SECONDS
-
-function displayTime(time) {
-  const minutes = Math.floor(time / 60);
-  let seconds = Math.floor(time % 60);
-  seconds = seconds > 9 ? seconds : `0${seconds}`;
-  return `${minutes}:${seconds}`;
-  // return minutes + ':' + seconds;
-}
-
-// VIDEO - - - - - - - update progress bar as the video plays
-// OR THIS FUNCTION, DURATION IS A PROPERTY OF THE VIDEO ELEMENT, WHAT ABOUT THE AUDIO ELEMENT? ad to comment out time-duration in index.html
-
-function updateProgress() {
-//   added this to stop the NaN displaying, seems to work
-  let duration = 0;
-  progressBar.style.width = `${(audioPlayer.currentTime / audioPlayer.duration) * 100}%`;
-  currentTime.textContent = `${displayTime(audioPlayer.currentTime)} /`;
-  // currentTime.textContent = `${displayTime(audioPlayer.currentTime)}`;
-  duration.textContent = 
- // had to comment out the duration   
- `${displayTime(audioPlayer.duration)}`;
-}
-// VIDEO - - - - -
-function scrub(event) {
-  const scrubTime = (event.offsetX / progressRange.offsetWidth) * audioPlayer.duration;
-  audioPlayer.currentTime = scrubTime;
-}
-
-// from https://css-tricks.com/lets-create-a-custom-audio-player/ but only got rid of the initial load - search: html5 audio element duration NaN
-const displayDuration = () => {
-  duration.textContent = displayTime(audio.duration);
-}
-
-if (audio.readyState > 0) {
-  displayDuration();
-} else {
-  audio.addEventListener('loadedmetadata', () => {
-    displayDuration();
-  });
-}
-
-// set progress bar
-// function setProgress(e) {
-//   const width = this.clientWidth;
-//   const clickX = e.offsetX;
-//   const duration = audio.duration;
-
-//   audio.currentTime = (clickX / width) * duration;
-// }
-// VIDEO - - - - - Click to seek within the video
-function setProgress(e) {
-  const newTime = e.offsetX / progressRange.offsetWidth;
-  progressBar.style.width = `${newTime * 100}%`;
-  audioPlayer.currentTime = newTime * audioPlayer.duration;
-}
-
-// ==================== VOLUME CONTROLS
-
-// volume functions
-function handleRangeUpdate() {
-  audioPlayer[this.name] = this.value;
-  (audioPlayer['volume'] === 0 ? speakerIcon.className = "fa fa-volume-off" :
-    speakerIcon.className = "fa fa-volume-up")
-}
-
-let muted = false;
-
-// need to have the muste button return to previous setting, not back to full
-function mute() {
-  if (!muted) {
-    audioPlayer['volume'] = 0;
-    volInput.value = 0;
-    speakerIcon.className = "fa fa-volume-off"
-    muted = true;
-  } else {
-    audioPlayer['volume'] = 1;
-    volInput.value = 1;
-    muted = false;
-    speakerIcon.className = "fa fa-volume-up"
   }
-}
-
-// ==================== END VOLUME CONTROLS
-
-// Event Listeners
-playBtn.addEventListener('click', () => {
-  const isPlaying = musicContainer.classList.contains('play');
-
-  if (isPlaying) {
-    pauseSong();
-  } else {
-    playSong();
+  75%{
+    background-image: url("image/4.png");
   }
-});
 
-// Change Song
-prevBtn.addEventListener('click', prevSong);
-nextBtn.addEventListener('click', nextSong);
+  100% {
 
-// time and song update
-audio.addEventListener('timeupdate', updateProgress);
+    background-image: url("image/a.jpg");
 
-// click on progrss bar
-// progressContainer.addEventListener('click', setProgress);
-// VIDEO
-progressRange.addEventListener('click', setProgress);
-
-// preload metadata
-
-
-// song ends
-audio.addEventListener('ended', nextSong);
-
-// volume
-ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
-ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
-speaker.addEventListener('click', mute)
-
-// progress bar controls
-let mouseDown = false;
-progressRange.addEventListener('click', scrub);
-progressRange.addEventListener('mousemove', (event) => mouseDown && scrub(event));
-progressRange.addEventListener('mousedown', () => mouseDown = true);
-progressRange.addEventListener('mouseup', () => mouseDown = false);
-
-// ignore the massive amount of lines commented out - will fix later
-// the song titles refer to the songs on my computer - you could hard code the title if the HTML if you only intend to use this for one song
-// I can't figure out how to get rid of Nan for the duration element
+  }
+ 
+}
