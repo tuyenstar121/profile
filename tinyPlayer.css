@@ -11,7 +11,7 @@
 }
 
 .music-container {
-   background-color: rgba(255, 255, 255, 0.5); 
+   background-color: rgba(27, 25, 25, 0.5); 
   border-radius: 1em;
   box-shadow: 0 1em 1.25em 0 rgba(16, 21, 88, 0.6);
   display: block;
@@ -62,7 +62,7 @@
 .action-btn:hover {
   outline: 0;
   /* color: #fff; */
-  color: goldenrod;
+  color: #630733;
 }
 
 .speaker {
@@ -115,7 +115,7 @@
 .music-container .music-info {
   opacity: 1;
   transform: translateY(-150%);
-  background-color: rgba(2, 60, 15, 0.5);
+  background-color: rgba(2, 60, 15, 0.2);
   border: 0.125em solid black;
 }
 
@@ -177,7 +177,7 @@ input[type='range']::-webkit-slider-thumb {
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -4px;
-  box-shadow: 0 0 2px rgb(15, 14, 80);
+  box-shadow: 0 0 2px rgb(17, 14, 158);
 }
 
 input[type='range']::-moz-range-track {
@@ -230,7 +230,7 @@ input[type='range']::-moz-range-thumb {
   }
 
   25% {
-    background-image: url("image/3.png");
+    background-image: url("image/2.png");
 
   }
 
