@@ -12,11 +12,13 @@
   <link rel="stylesheet" href="tinyPlayer.css" />
   <script src="https://kit.fontawesome.com/b8b432d7d3.js" crossorigin="anonymous"></script>
   <style>
+    @import url('https://fonts.googleapis.com/css?family=Baloo+Thambi');
+
     * {
       padding: 0;
       margin: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+
     }
 
     body {
@@ -24,13 +26,17 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-     
+
       z-index: 0;
 
       background-image: url(image/nature-3082832_1920.jpg);
-      background-repeat: repeat;
 
-      background-color: #1d0505;
+      background-size: cover;
+      background-blend-mode: soft-light;
+
+
+      background-color: #28252c;
+
 
     }
 
@@ -59,9 +65,9 @@
       position: absolute;
       width: 500px;
       height: 700px;
-      border-radius: 12px;
+      border-radius: 15px;
       overflow: hidden;
-      background-color: #2a45b2;
+      background-color: #0d0d0e;
 
       display: flex;
       justify-content: center;
@@ -103,38 +109,308 @@
     .form {
       position: absolute;
       inset: 3px;
-      border-radius: 8px;
-      background: #0734e8;
+      border-radius: 10px;
+      background: #0e101a;
       z-index: 1;
       padding: 50px;
-      background-image: url("image/a.jpg");
+      align-items: center;
       background-repeat: repeat;
+      background-blend-mode: hard-light;
 
-      background-size: 100%;
+      background-size: cover;
+      animation: anitu 16s ease-in-out infinite;
+
+    }
+
+    @keyframes anitu {
+      0% {
+        background-image: url("image/a.jpg");
+
+      }
+
+      25% {
+        background-image: url("image/2.png");
+
+      }
+
+      50% {
+        background-image: url("image/3.png");
+
+      }
+      75%{
+        background-image: url("image/4.png");
+      }
+
+      100% {
+
+        background-image: url("image/5.jpg");
+
+      }
+     
     }
 
     .social-media {
       position: static;
       grid-area: 2/1/3/3;
-      
 
+      text-align: center;
       background-color: var(--secondary-bg);
       color: var(--secondary-color);
       padding: 15px;
-      border-radius: 10px;
+      border-radius: 15px;
 
-      display: block;
+      display: flex;
       align-items: center;
       gap: 20px;
     }
 
-    .media-link {
-      text-decoration: #050505;
-      font: bold;
-      color: var(--accent-color);
-      font-size: 30px;
+
+    ul {
+      display: flex;
     }
 
+    ul li {
+      position: relative;
+      display: block;
+      color: #666;
+      font-size: 15px;
+      height: 30px;
+      width: 30px;
+      background: #171515;
+      line-height: 30px;
+      border-radius: 50%;
+      margin: 0 15px;
+      cursor: pointer;
+      transition: .5s;
+    }
+
+    ul li:before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      height: inherit;
+      width: inherit;
+      /* background: #d35400; */
+      border-radius: 50%;
+      transform: scale(.9);
+      z-index: -1;
+      transition: .5s;
+    }
+
+    ul li:nth-child(1):before {
+      background: #4267B2;
+    }
+
+    ul li:nth-child(2):before {
+      background: #1DA1F2;
+    }
+
+    ul li:nth-child(3):before {
+      background: #E1306C;
+    }
+
+    ul li:nth-child(4):before {
+      background: #2867B2;
+    }
+
+    ul li:nth-child(5):before {
+      background: #ff0000;
+    }
+
+    ul li:hover:before {
+      filter: blur(3px);
+      transform: scale(1.4);
+      /* box-shadow: 0 0 15px #d35400; */
+    }
+
+    ul li:nth-child(1):hover:before {
+      box-shadow: 0 0 15px #4267B2;
+    }
+
+    ul li:nth-child(2):hover:before {
+      box-shadow: 0 0 15px #1DA1F2;
+    }
+
+    ul li:nth-child(3):hover:before {
+      box-shadow: 0 0 15px #E1306C;
+    }
+
+    ul li:nth-child(4):hover:before {
+      box-shadow: 0 0 15px #2867B2;
+    }
+
+    ul li:nth-child(5):hover:before {
+      box-shadow: 0 0 15px #ff0000;
+    }
+
+    ul li:nth-child(1):hover {
+      color: #456cba;
+      box-shadow: 0 0 15px #4267B2;
+      text-shadow: 0 0 15px #4267B2;
+    }
+
+    ul li:nth-child(2):hover {
+      color: #26a4f2;
+      box-shadow: 0 0 15px #1DA1F2;
+      text-shadow: 0 0 15px #1DA1F2;
+    }
+
+    #b:hover {
+      color: #e23670;
+      box-shadow: 0 0 15px #E1306C;
+      text-shadow: 0 0 15px #E1306C;
+    }
+
+    ul li:nth-child(4):hover {
+      color: #2a6cbb;
+      box-shadow: 0 0 15px #2867B2;
+      text-shadow: 0 0 15px #2867B2;
+    }
+
+    ul li:nth-child(5):hover {
+      color: #ff1a1a;
+      box-shadow: 0 0 15px #ff0000;
+      text-shadow: 0 0 15px #ff0000;
+    }
+
+    ul li:hover {
+      color: #ffa502;
+      box-shadow: 0 0 15px #d35400;
+      text-shadow: 0 0 15px #d35400;
+    }
+
+    ul li i {
+      margin-top: 8;
+    }
+
+
+    #pinkboard {
+      position: relative;
+      margin: auto;
+      height: 400px;
+      width: 400px;
+      animation: animate1 1.3s infinite;
+    }
+
+    #pinkboard:before,
+    #pinkboard:after {
+      content: '';
+      position: absolute;
+      background: #FF5CA4;
+      width: 100px;
+      height: 160px;
+      border-top-left-radius: 50px;
+      border-top-right-radius: 50px;
+    }
+
+    #pinkboard:before {
+      left: 100px;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+
+    #pinkboard:after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+
+    span {
+      position: static;
+      size: 1000px;
+      top: 100;
+      ;
+    }
+
+    .test {
+
+
+      position: absolute;
+      color: #111;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      left: 7px;
+      ;
+      top: -151px;
+      font-family: 'Baloo Thambi', cursive;
+      font-size: 4rem;
+
+
+    }
+
+    .test>span {
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    .test>span:nth-child(1) {
+      animation-delay: 0, 25s;
+    }
+
+    .test>span:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .test>span:nth-child(3) {
+      animation-delay: 0.75s;
+    }
+
+    .test>span:nth-child(4) {
+      animation-delay: 1s;
+    }
+
+    .test>span:nth-child(5) {
+      animation-delay: 1.25s;
+    }
+
+    .test>span:nth-child(6) {
+      animation-delay: 1.5s;
+    }
+
+    .test>span:nth-child(7) {
+      animation-delay: 1.75s;
+    }
+
+    @keyframes glow {
+
+      0%,
+      100% {
+        color:
+          #fff;
+        text-shadow: 0 0 12px lime, 0 0 50px lime, 0 0 100px lime;
+      }
+
+      10%,
+      90% {
+        color: #111;
+        text-shadow: none;
+      }
+    }
+
+    @keyframes animate1 {
+      0% {
+        transform: scale(1);
+      }
+
+      30% {
+        transform: scale(.8);
+      }
+
+      60% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* 
     @media only screen and (max-width:1024px) {
       .box {
         position: absolute;
@@ -213,7 +489,7 @@
       }
 
    
-    }
+    } */
 
     @keyframes animate {
       0% {
@@ -236,7 +512,22 @@
   <div class="box">
 
     <div class="form">
-      <canvas id="pinkboard"></canvas>
+      <div class="test">
+        <span>K</span>
+        <span>H</span>
+        <span>A</span>
+        <span>L</span>
+        <span>A</span>
+        <span>N</span>
+        <span>A </span>
+
+
+
+      </div>
+      <canvas id="pinkboard">
+
+      </canvas>
+
       <div class="audio">
 
         <div class="wrapper">
@@ -251,18 +542,23 @@
               </div>
             </div>
             <div class="social-media">
-              <span style="font-family:monospace;font:bold">Follow me in:</span>
-              <a href="https://www.facebook.com/phuongnhi.dang.965" class="media-link"><i class="fab fa-facebook-square"></i></a>
-           
-              <a href="https://www.linkedin.com/in/mohammadsahragard/" class="media-link"><i
-                  class="fab fa-linkedin"></i></a>
-              <a href="https://www.instagram.com/khalana_n/?hl=en" class="media-link"><i
-                  class="fab fa-instagram-square"></i></a>
-  
+              <ul>
+                <a href="https://www.facebook.com/phuongnhi.dang.965">
+                  <li id="a"><i class="fab fa-facebook-f"></i></li>
+                </a>
+                <a href="">
+                  <li><i class="fab fa-twitter"></i></li>
+                </a>
+                <a href="https://www.instagram.com/khalana_n/?hl=en">
+                  <li id="b"><i class="fab fa-instagram"></i></li>
+                </a>
+                <li><i class="fab fa-linkedin-in"></i></li>
+                <li><i class="fab fa-youtube"></i></li>
+              </ul>
             </div>
 
-            <audio autoplay src="image/NgheNhuTinhYeu-HIEUTHUHAI-7045493.mp3" id="audio"
-              class="audio audio_player" preload="metadata"></audio>
+            <audio autoplay src="image/NgheNhuTinhYeu-HIEUTHUHAI-7045493.mp3" id="audio" class="audio audio_player"
+              preload="metadata"></audio>
 
             <div class="navigation">
               <button id="prev" class="action-btn" title="Previous">
@@ -295,6 +591,7 @@
     </div>
 
   </div>
+
   <script>
     /*
    * Settings
@@ -302,7 +599,7 @@
     var settings = {
       particles: {
         length: 3000, // maximum amount of particles
-        duration: 4, // particle duration in sec
+        duration: 2, // particle duration in sec
         velocity: 100, // particle velocity in pixels/sec
         effect: -1.3, // play with this for a nice effect
         size: 15, // particle size in pixels
@@ -493,7 +790,8 @@
         }
         context.closePath();
         // create the fill
-        context.fillStyle = "pink";
+
+        context.fillStyle = "#E1306C  ";
         context.fill();
         // create the image
         var image = new Image();
@@ -750,12 +1048,13 @@
       if (isPlaying) {
         pauseSong();
       } else {
+        setInterval(nextSong, 3000);
         playSong();
       }
     });
 
     // Change Song
-    setInterval(nextSong, 3000);
+    
     prevBtn.addEventListener('click', prevSong);
     nextBtn.addEventListener('click', nextSong);
 
