@@ -106,48 +106,7 @@
 
     }
 
-    .form {
-      position: absolute;
-      inset: 3px;
-      border-radius: 10px;
-      background: #0e101a;
-      z-index: 1;
-      padding: 50px;
-      align-items: center;
-      background-repeat: repeat;
-      background-blend-mode: hard-light;
-
-      background-size: cover;
-      animation: anitu 16s ease-in-out infinite;
-
-    }
-
-    @keyframes anitu {
-      0% {
-        background-image: url("image/a.jpg");
-
-      }
-
-      25% {
-        background-image: url("image/2.png");
-
-      }
-
-      50% {
-        background-image: url("image/3.png");
-
-      }
-      75%{
-        background-image: url("image/4.png");
-      }
-
-      100% {
-
-        background-image: url("image/5.jpg");
-
-      }
-     
-    }
+   
 
     .social-media {
       position: static;
@@ -290,7 +249,7 @@
       margin: auto;
       height: 400px;
       width: 400px;
-      animation: animate1 1.3s infinite;
+      animation: animate1 2s infinite;
     }
 
     #pinkboard:before,
@@ -334,10 +293,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      left: 7px;
-      ;
-      top: -151px;
+     
+      left: 2%;
+    top: 25%;
       font-family: 'Baloo Thambi', cursive;
       font-size: 4rem;
 
@@ -557,7 +515,7 @@
               </ul>
             </div>
 
-            <audio autoplay src="image/NgheNhuTinhYeu-HIEUTHUHAI-7045493.mp3" id="audio" class="audio audio_player"
+            <audio src="image/NgheNhuTinhYeu-HIEUTHUHAI-7045493.mp3" id="audio" class="audio audio_player"
               preload="metadata"></audio>
 
             <div class="navigation">
@@ -872,11 +830,9 @@
     // Song Titles - need to get rid of this hard coded list of titles. Need to be able to upload multiple files from desktop or load a list from an API
     const songs = [
       'Đặng Thị Phương Nhi',
-      'Kha La Na',
-      'Nhỏ Khó Ưa',
       'STK:1015451351 ',
       'VietComBank',
-      'SDT:0765272235',
+      'SĐT:0765272235',
       'Hey!',
       'Cậu Ơi',
       '.......',
